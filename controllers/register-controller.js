@@ -5,9 +5,13 @@ const usersDB = {
     this.users = data;
   },
 };
+const bcrypt = require("bcrypt");
+const fsPromises = require("fs").promises;
+const path = require("path");
 
 const createNewUser = async (req, res) => {
   const { username, password } = req.body;
+  console.log(`username: ${username}\tpassword:${password}`);
   if (!username || !password)
     return res
       .status(400)
@@ -24,10 +28,10 @@ const createNewUser = async (req, res) => {
     try {
       const hashedPwd = await bcrypt.hash(password, 10);
       const newUser = { username: username, password: hashedPwd };
-      usersDB.setUser([...usersDB.users, newAdmin]);
+      usersDB.setUser([...usersDB.users, newUser]);
       await fsPromises.writeFile(
         path.join(__dirname, "..", "models", "users.json"),
-        JSON.stringify(usersDB.admins)
+        JSON.stringify(usersDB.users)
       );
       console.log(usersDB.users);
       res.status(201).json({ message: `New User ${username} created!` });

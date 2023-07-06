@@ -1,1 +1,10 @@
-[]
+[
+  {
+    "username": "anders",
+    "password": "$2b$10$QlL044buiDo3D7uHvcdHJ.4p1STxFpsp99AmClrLF51Xknku0ka8q"
+  },
+  {
+    "username": "band",
+    "password": "$2b$10$D2s/v/jox3AjhnXSI7XM7eaJA4D5bXQrcL.3.CNEzcXqwCWSsX8ki"
+  }
+]
